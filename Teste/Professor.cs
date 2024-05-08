@@ -9,15 +9,33 @@ namespace Trabalho3
     public class Professor
     {
         public string Nome { get; set; }
-        public string Disciplina { get; set; }
-        public Professor(string nome, string disciplina)
+        public List<Disciplina> DisciplinasMinistradas { get; set; }
+
+        public Professor(string nome)
         {
             Nome = nome;
-            Disciplina = disciplina;
+            DisciplinasMinistradas = new List<Disciplina>();
         }
-        public void DarAula()
+
+        public void AtribuirDisciplina(Disciplina disciplina)
         {
-            Console.WriteLine($"{Nome} está dando aula de {Disciplina}");
+            DisciplinasMinistradas.Add(disciplina);
+            Console.WriteLine($"Disciplina {disciplina.Nome} atribuída ao professor {Nome}.");
+        }
+
+        public void RemoverDisciplina(Disciplina disciplina)
+        {
+            DisciplinasMinistradas.Remove(disciplina);
+            Console.WriteLine($"Disciplina {disciplina.Nome} removida do professor {Nome}.");
+        }
+
+        public void ExibirDisciplinas()
+        {
+            Console.WriteLine($"Disciplinas ministradas pelo professor {Nome}:");
+            foreach (var disciplina in DisciplinasMinistradas)
+            {
+                Console.WriteLine($"- {disciplina.Nome}");
+            }
         }
     }
 }

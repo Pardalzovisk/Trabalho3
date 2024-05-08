@@ -1,26 +1,32 @@
 ﻿using Trabalho3;
 class Program
 {
-    static void Main(string[] args)
-    {
-        Professor prof = new Professor("João", "Matemática");
-        Disciplina matematica = new Disciplina("Matemática", prof);
-
-        Aluno aluno = new Aluno("Maria", 123456);
-        aluno.AdicionarDisciplina(matematica);
-        Console.WriteLine($"As disciplinas de {aluno.Nome} são:");
-        foreach (var disciplina in aluno.Disciplinas)
+        static void Main(string[] args)
         {
-            Console.WriteLine(disciplina.Nome);
-        }
+            var professor1 = new Professor("João");
+            var professor2 = new Professor("Maria");
 
-        Curso curso = new Curso("Engenharia");
-        curso.AdicionarDisciplina(matematica);
-        Console.WriteLine($"\nAs disciplinas do curso de {curso.Nome} são:");
-        foreach (var disciplina in curso.Disciplinas)
-        {
-            Console.WriteLine(disciplina.Nome);
+            var disciplina1 = new Disciplina("Matemática", professor1);
+            var disciplina2 = new Disciplina("Português", professor2);
+
+            var aluno1 = new Aluno("Pedro", 1);
+            var aluno2 = new Aluno("Ana", 2);
+
+            professor1.AtribuirDisciplina(disciplina1);
+            professor2.AtribuirDisciplina(disciplina2);
+
+            aluno1.Matricular(disciplina1);
+            aluno2.Matricular(disciplina2);
+
+            disciplina1.ExibirAlunos();
+            disciplina2.ExibirAlunos();
+
+            professor1.ExibirDisciplinas();
+            professor2.ExibirDisciplinas();
+
+            aluno1.CancelarMatricula(disciplina1);
+
+            aluno1.ExibirDisciplinas();
+            aluno2.ExibirDisciplinas();
         }
-        prof.DarAula();
-    }
 }
