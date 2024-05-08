@@ -23,12 +23,14 @@ namespace Trabalho3
         public void Matricular(Disciplina disciplina)
         {
             Disciplinas.Add(disciplina);
+            disciplina.AdicionarAluno(this);
             Console.WriteLine($"{Nome} matriculado na disciplina {disciplina.Nome}.");
         }
 
         public void CancelarMatricula(Disciplina disciplina)
         {
             Disciplinas.Remove(disciplina);
+            disciplina.RemoverAluno(this);
             Console.WriteLine($"{Nome} cancelou a matrícula na disciplina {disciplina.Nome}.");
         }
 

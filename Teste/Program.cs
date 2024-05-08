@@ -17,7 +17,7 @@ class Program
 
             aluno1.Matricular(disciplina1);
             aluno2.Matricular(disciplina2);
-
+            
             disciplina1.ExibirAlunos();
             disciplina2.ExibirAlunos();
 
